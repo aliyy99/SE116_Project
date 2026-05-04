@@ -5,13 +5,26 @@ public abstract class Zones extends Cell{
     protected boolean hasEducation;
     protected boolean hasSecurity;
     protected boolean hasHealth;
-    protected int electricty,water,internet;
-    protected int receivedGoods,receivedLifeStyle,receivedPopulation;
+    protected int electricity,water,internet;
+    protected int receivedPopulation;
+    protected int receivedGoods;
+    protected int receivedLifestyle;
     protected boolean totalLoss;
 
     public Zones(int row, int col){
         super(row,col);
         this.level=0;
+    }
+    public void resetTickData() {
+        this.electricity = 0;
+        this.water = 0;
+        this.internet = 0;
+        this.hasEducation = false;
+        this.hasHealth = false;
+        this.hasSecurity = false;
+        this.receivedPopulation = 0;
+        this.receivedGoods = 0;
+        this.receivedLifestyle = 0;
     }
 
     public int getLevel() {
@@ -31,7 +44,7 @@ public abstract class Zones extends Cell{
     }
 
     public int getElectricty() {
-        return electricty;
+        return electricity;
     }
 
     public int getWater() {
@@ -54,11 +67,8 @@ public abstract class Zones extends Cell{
             level--;
         }
     }
-    public int calculateMinUtility(){
-        int min1_utility=Math.min(electricty,water);
-        int min2_utility=Math.min(min1_utility,internet);
-        return min2_utility;
-    }
-    public abstract void getOutput();
+    public abstract int calculateMinUtility();
 
+
+    public abstract int getOutput();
 }
