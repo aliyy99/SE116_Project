@@ -6,6 +6,10 @@ public class Housing extends Zones {
         super(row, col);
     }
 
+    public int getProducedPopulation() {
+        return producedPopulation;
+    }
+
     @Override
     public int calculateMinUtility() {
         return Math.min(this.electricity, Math.min(this.water, this.internet));
@@ -17,8 +21,8 @@ public class Housing extends Zones {
     }
 
     @Override
-        public String getSymbol () {
-            return "H";
+    public String getSymbol () {
+        return "H";
 
     }
 
@@ -38,11 +42,11 @@ public class Housing extends Zones {
                 break;
             case 1 :
                 if (level_2)levelUp();
-                if (electricity == 0 || water == 0 || internet == 0)levelDown(false);
+                else if (electricity == 0 || water == 0 || internet == 0)levelDown(false);
                 break;
             case 2 :
                 if (level_3)levelUp();
-                if (!hasEducation || !hasHealth || !hasSecurity)levelDown(false);
+                else if (!hasEducation || !hasHealth || !hasSecurity)levelDown(false);
                 break;
             case 3:
                 if (receivedLifestyle == 0)levelDown(false);
@@ -54,6 +58,6 @@ public class Housing extends Zones {
 
     @Override
     public void accumulate() {
-      //eklenecek
+        //eklenecek
     }
 }

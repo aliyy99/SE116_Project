@@ -1,11 +1,14 @@
 package com.objectville.model;
 
 public class Industrial extends Zones{
-    protected int producedGoods;
+    private int producedGoods;
 
     public Industrial(int row, int col) {
         super(row, col);
+    }
 
+    public int getProducedGoods() {
+        return producedGoods;
     }
 
     @Override
@@ -14,25 +17,49 @@ public class Industrial extends Zones{
     }
 
     @Override
-        public int getOutput() {
-            return this.producedGoods;
-        }
+    public int getOutput() {
+        return producedGoods;
+    }
 
-        @Override
-        public String getSymbol () {
-            return "I";
+    @Override
+    public String getSymbol () {
+        return "I";
 
-        }
+    }
 
     @Override
     public void update() {
+        boolean level_1=receivedPopulation>0 && electricity>0 && water>0;
+        boolean level_2=level_1 && hasSecurity;
+        boolean level_3=level_2 && receivedPopulation>0;
 
+        if (electricity == 0 && water == 0){
+            levelDown(true);
+        }
+        switch (level){
+            case 0:
+                if(level_1) levelUp();
+                break;
+            case 1:
+                if(level_2) levelUp();
+                else if(electricity==0 || water==0 || receivedPopulation==0) levelDown(false);
+                break;
+            case 2:
+                if(level_3) levelUp();
+                else if(!hasSecurity) levelDown(false);
+                break;
+            case 3:
+                if(receivedPopulation==0) levelDown(false);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + level);
+        }
     }
 
 
     @Override
-        public void accumulate() {
+    public void accumulate() {
 //eklenecek
-        }
     }
+}
 

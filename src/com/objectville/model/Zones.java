@@ -9,7 +9,6 @@ public abstract class Zones extends Cell{
     protected int receivedPopulation;
     protected int receivedGoods;
     protected int receivedLifestyle;
-    protected boolean totalLoss;
 
     public Zones(int row, int col){
         super(row,col);
