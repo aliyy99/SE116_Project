@@ -59,6 +59,20 @@ public class Commercial extends Zones {
 
     @Override
     public void accumulate() {
-//eklenecek
+        int m = calculateMinUtility();
+
+        switch(this.level){
+            case 0 : this.producedLifestyle = 0;
+                break;
+            case 1 : this.producedLifestyle= m;
+                break;
+            case 2 : this.producedLifestyle = 2 * m;
+                break;
+            case 3 :
+                int bottleneck = Math.min(receivedPopulation,receivedGoods);
+                this.producedLifestyle = (2 * m) + bottleneck;
+                break;
+            default: this.producedLifestyle = 0;
+        }
     }
 }

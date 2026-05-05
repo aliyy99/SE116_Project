@@ -58,6 +58,18 @@ public class Housing extends Zones {
 
     @Override
     public void accumulate() {
-        //eklenecek
+        int m = calculateMinUtility();
+
+        switch(this.level){
+            case 0 : this.producedPopulation = 0;
+            break;
+            case 1 : this.producedPopulation = m;
+            break;
+            case 2 : this.producedPopulation = 2 * m;
+            break;
+            case 3 : this.producedPopulation = (2 * m) + receivedLifestyle;
+            break;
+            default: this.producedPopulation = 0;
+        }
     }
 }

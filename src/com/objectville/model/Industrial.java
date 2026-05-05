@@ -59,7 +59,19 @@ public class Industrial extends Zones{
 
     @Override
     public void accumulate() {
-//eklenecek
+        int m = calculateMinUtility();
+
+        switch(this.level){
+            case 0 : this.producedGoods = 0;
+                break;
+            case 1 : this.producedGoods = m;
+                break;
+            case 2 : this.producedGoods = 2 * m;
+                break;
+            case 3 : this.producedGoods = (2 * m) + receivedPopulation;
+                break;
+            default: this.producedGoods = 0;
+        }
     }
 }
 
