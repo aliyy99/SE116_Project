@@ -50,6 +50,30 @@ public abstract class Zones extends Cell{
         return water;
     }
 
+    public int getReceivedPopulation() {
+        return receivedPopulation;
+    }
+
+    public void setReceivedPopulation(int receivedPopulation) {
+        this.receivedPopulation = receivedPopulation;
+    }
+
+    public int getReceivedGoods() {
+        return receivedGoods;
+    }
+
+    public void setReceivedGoods(int receivedGoods) {
+        this.receivedGoods = receivedGoods;
+    }
+
+    public int getReceivedLifestyle() {
+        return receivedLifestyle;
+    }
+
+    public void setReceivedLifestyle(int receivedLifestyle) {
+        this.receivedLifestyle = receivedLifestyle;
+    }
+
     public int getInternet() {
         return internet;
     }
