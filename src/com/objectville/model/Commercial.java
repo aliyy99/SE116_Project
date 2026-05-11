@@ -1,5 +1,7 @@
 package com.objectville.model;
 
+import com.objectville.util.ResourcePool;
+
 public class Commercial extends Zones {
     private int producedLifestyle;
 
@@ -74,5 +76,6 @@ public class Commercial extends Zones {
                 break;
             default: this.producedLifestyle = 0;
         }
+        ResourcePool.addLifestyle(producedLifestyle);
     }
 }

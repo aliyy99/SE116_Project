@@ -8,13 +8,13 @@ import com.objectville.simulation.Grid;
 import com.objectville.model.Zones;
 
 public class ResourcePool {
-    private int totalPopulation;
-    private int totalGoods;
-    private int totalLifestyle;
+    private static int totalPopulation;
+    private static int totalGoods;
+    private static int totalLifestyle;
 
 
 
-    public int getTotalPopulation() {
+    public  int getTotalPopulation() {
         return totalPopulation;
     }
 
@@ -24,23 +24,23 @@ public class ResourcePool {
 
     public int getTotalLifestyle() {
         return totalLifestyle;
-    }
-    public void addPopulation(int amount){
+      }
+    public static void addPopulation(int amount){
         totalPopulation = totalPopulation + amount;
     }
-    public void addGoods(int amount){
+    public static void addGoods(int amount){
         totalGoods = totalGoods + amount;
     }
-    public void addLifestyle(int amount){
+    public static void addLifestyle(int amount){
         totalLifestyle = totalLifestyle + amount;
     }
-    public void reset(){
+    public static void reset(){
         totalLifestyle = 0;
         totalGoods = 0;
         totalPopulation = 0;
     }
 
-    public void distributeResource(Grid grid){
+    public static void distributeResource(Grid grid){
         int industrialCount = 0;
         int commercialCount = 0;
         int housingCount = 0;

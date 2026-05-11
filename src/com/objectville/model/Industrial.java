@@ -1,5 +1,7 @@
 package com.objectville.model;
 
+import com.objectville.util.ResourcePool;
+
 public class Industrial extends Zones{
     private int producedGoods;
 
@@ -72,6 +74,7 @@ public class Industrial extends Zones{
                 break;
             default: this.producedGoods = 0;
         }
+        ResourcePool.addGoods(producedGoods);
     }
 }
 

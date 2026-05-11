@@ -1,5 +1,7 @@
 package com.objectville.model;
 
+import com.objectville.util.ResourcePool;
+
 public class Housing extends Zones {
     private int producedPopulation;
     public Housing(int row, int col) {
@@ -71,5 +73,6 @@ public class Housing extends Zones {
             break;
             default: this.producedPopulation = 0;
         }
+        ResourcePool.addPopulation(producedPopulation);
     }
 }
