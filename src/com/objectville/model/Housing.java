@@ -75,4 +75,9 @@ public class Housing extends Zones {
         }
         ResourcePool.addPopulation(producedPopulation);
     }
+    @Override
+    public int getUtilityDemand(String resourceType){
+        if (resourceType.equals("Electricity") || resourceType.equals("Water") || resourceType.equals("Internet")) return producedPopulation;
+        else return 0;
+    }
 }

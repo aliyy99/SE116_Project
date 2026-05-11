@@ -7,6 +7,15 @@ public abstract class Cell {
         this.row = row;
         this.col = col;
     }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
     public abstract String getSymbol();
     public abstract void update();
     public abstract void accumulate();

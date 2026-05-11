@@ -90,8 +90,18 @@ public abstract class Zones extends Cell{
             level--;
         }
     }
+    public void receiveResource(String resourceType,int resourceOfAmount){
+        if (resourceType.equals("Electricity")){
+            electricity+=resourceOfAmount;
+        }
+        else if(resourceType.equals("Water")){
+            water+=resourceOfAmount;
+        }
+        else if (resourceType.equals("Internet")){
+            internet+=resourceOfAmount;
+        }
+    }
     public abstract int calculateMinUtility();
-
-
+    public abstract int getUtilityDemand(String resourceType);
     public abstract int getOutput();
 }

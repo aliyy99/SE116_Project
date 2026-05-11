@@ -78,4 +78,9 @@ public class Commercial extends Zones {
         }
         ResourcePool.addLifestyle(producedLifestyle);
     }
+    @Override
+    public int getUtilityDemand(String resourceType){
+        if(resourceType.equals("Water") ||resourceType.equals("Internet") || resourceType.equals("Electricity")) return producedLifestyle;
+        else return 0;
+    }
 }

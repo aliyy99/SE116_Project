@@ -76,5 +76,10 @@ public class Industrial extends Zones{
         }
         ResourcePool.addGoods(producedGoods);
     }
+    @Override
+    public int getUtilityDemand(String resourceType){
+        if(resourceType.equals("Water") || resourceType.equals("Electricity")) return producedGoods;
+        else return 0;
+    }
 }
 
