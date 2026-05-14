@@ -74,7 +74,7 @@ public class Industrial extends Zones{
                 break;
             default: this.producedGoods = 0;
         }
-        ResourcePool.addGoods(producedGoods);
+
     }
     @Override
     public int getUtilityDemand(String resourceType){

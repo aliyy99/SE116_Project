@@ -3,7 +3,6 @@ package com.objectville.simulation;
 import com.objectville.model.*;
 import com.objectville.util.*;
 
-import static com.objectville.util.DistanceCalculator.calculateEuclidDistance;
 import static com.objectville.util.DistanceCalculator.isWithinRange;
 
 public class SimulationEngine {
@@ -89,9 +88,9 @@ public class SimulationEngine {
             }
         }}
         private void applyServiceFlag(Zones zone, String serviceLabel) {
-            if (serviceLabel.contains("Education")) zone.setHasEducation(true);
-            else if (serviceLabel.contains("Security")) zone.setHasSecurity(true);
-            else if (serviceLabel.contains("Health")) zone.setHasHealth(true);
+            if (serviceLabel.equals("education service")) zone.setHasEducation(true);
+            else if (serviceLabel.equals("security service")) zone.setHasSecurity(true);
+            else if (serviceLabel.equals("health service")) zone.setHasHealth(true);
         }
 
 
@@ -103,11 +102,51 @@ public class SimulationEngine {
             ResourcePool.distributeResource(this.grid);
         }
 
-        private void executeStep4_UpdateLevels () {
-        }
-
-
-        private void executeStep5_Accumulate () {
+    private void executeStep4_UpdateLevels() {
+        for (Cell[] row : grid.getCells()) {
+            for (Cell cell : row) {
+                if (cell instanceof Zones) {
+                    Zones zone = (Zones) cell;
+                    int oldLevel = zone.getLevel();
+                    zone.update();
+                    int newLevel = zone.getLevel();
+                    if (newLevel > oldLevel) {
+                        System.out.println(zone.getClass().getSimpleName() + " at (" + zone.getRow() + "," + zone.getCol() + ") levels up from " + oldLevel + " to " + newLevel);
+                    }
+                    else{
+                        System.out.println(zone.getClass().getSimpleName() + " at (" + zone.getRow() + "," + zone.getCol() + ") levels down from " + oldLevel + " to " + newLevel);
+                    }
+                }
+            }
         }
     }
+
+
+    private void executeStep5_Accumulate() {
+        for(Cell[] row : grid.getCells()){
+            for(Cell cell : row){
+                if(cell instanceof Zones){
+                    Zones zones = (Zones) cell;
+                    cell.accumulate();
+                    int producedAmount = ((Zones) cell).getOutput();
+                    if(cell instanceof  Housing){
+                        ResourcePool.addPopulation(producedAmount);
+                        System.out.println( "House at(" +zones.getRow() + "," + zones.getCol() +") generated " + producedAmount + " population");
+                    }
+                    else if (cell instanceof Industrial) {
+                        ResourcePool.addGoods(producedAmount);
+                        System.out.println( "Industrial  at (" + zones.getRow() + "," + zones.getCol() + ") generated " + producedAmount + " goods");
+                    }
+                    else if (cell instanceof Commercial) {
+                        ResourcePool.addLifestyle(producedAmount);
+                        System.out.println( "Commercial at (" + zones.getRow() + "," + zones.getCol() + ") generated " + producedAmount + " lifestyle");
+
+                    }
+
+                }
+            }
+        }
+    }
+
+}
 

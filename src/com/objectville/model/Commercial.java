@@ -76,7 +76,7 @@ public class Commercial extends Zones {
                 break;
             default: this.producedLifestyle = 0;
         }
-        ResourcePool.addLifestyle(producedLifestyle);
+
     }
     @Override
     public int getUtilityDemand(String resourceType){
