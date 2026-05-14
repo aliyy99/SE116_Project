@@ -22,6 +22,6 @@ public class PoliceStation extends ServiceBuilding{
 
     @Override
     public String getServiceType() {
-        return "Security";
+        return "security service";
     }
 }

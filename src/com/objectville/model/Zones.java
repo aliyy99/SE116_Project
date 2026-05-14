@@ -31,17 +31,25 @@ public abstract class Zones extends Cell{
     }
 
     public boolean isHasEducation() {
-        return hasEducation;
-    }
+        return hasEducation;}
 
+    public void setHasEducation(boolean hasEducation) {
+        this.hasEducation = hasEducation;
+    }
     public boolean isHasSecurity() {
         return hasSecurity;
     }
 
+    public void setHasSecurity(boolean hasSecurity) {
+        this.hasSecurity = hasSecurity;
+    }
     public boolean isHasHealth() {
         return hasHealth;
     }
 
+    public void setHasHealth(boolean hasHealth) {
+        this.hasHealth = hasHealth;
+    }
     public int getElectricty() {
         return electricity;
     }

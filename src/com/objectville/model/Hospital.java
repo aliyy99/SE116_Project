@@ -22,6 +22,6 @@ public class Hospital extends ServiceBuilding{
 
     @Override
     public String getServiceType() {
-        return "Health";
+        return "health service";
     }
 }

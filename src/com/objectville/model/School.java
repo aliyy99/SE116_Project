@@ -22,6 +22,6 @@ public class School extends ServiceBuilding{
 
     @Override
     public String getServiceType() {
-        return "Education";
+        return "education service";
     }
 }
