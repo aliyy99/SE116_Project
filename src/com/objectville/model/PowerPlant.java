@@ -1,10 +1,14 @@
 package com.objectville.model;
 
 public class PowerPlant extends UtilityProvider{
-    protected String resourceType;
+    private String resourceType;
     public PowerPlant(int row,int col){
         super(row, col);
         this.resourceType = "Electricity";
+    }
+
+    public String getResourceType() {
+        return resourceType;
     }
 
     @Override

@@ -95,6 +95,20 @@ public class SimulationEngine {
 
 
         private void executeStep2_Utilities () {
+        for(int r=0;r<grid.getRows();r++){
+            for(int c=0;c<grid.getColumns();c++){
+                Cell currentCell= grid.getCell(r,c);
+
+                if(currentCell instanceof PowerPlant){
+                    BFSUtility.distribute_utility(grid,(UtilityProvider) currentCell,"Electricity");
+                } else if (currentCell instanceof WaterStation) {
+                    BFSUtility.distribute_utility(grid,(UtilityProvider) currentCell,"Water");
+                }
+                else if(currentCell instanceof InternetHub){
+                    BFSUtility.distribute_utility(grid,(UtilityProvider) currentCell,"Internet" );
+                }
+            }
+        }
 
     }
 

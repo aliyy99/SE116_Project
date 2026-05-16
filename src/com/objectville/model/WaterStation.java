@@ -1,10 +1,14 @@
 package com.objectville.model;
 
 public class WaterStation extends UtilityProvider{
-    protected String resourceType;
+    private String resourceType;
     public WaterStation(int row,int col){
         super(row, col);
         this.resourceType = "Water";
+    }
+
+    public String getResourceType() {
+        return resourceType;
     }
 
     @Override
